@@ -1,5 +1,6 @@
 package com.portfolio.turano.models;
 
+import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,14 +12,21 @@ import lombok.Setter;
 @Entity
 public class Persona {
     
+    //DEFINO ID (PK) QUE SE GENERE DE FORMA AUTO
+    //ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    //NotNull EL CAMPO NO PUEDE ESTAR VACIO
+    @NotNull
     private String name;
+    @NotNull
     private String position;
+    @NotNull
     private String about;
-
+    
+    //CONSTRUCTORES
     public Persona() {
     }
 
