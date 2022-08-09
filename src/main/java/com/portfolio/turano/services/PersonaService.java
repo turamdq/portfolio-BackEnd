@@ -36,6 +36,12 @@ public class PersonaService implements IPersonaService{
        return persoRepo.findById(id).orElse(null);
     }
     
-    /*NO SE COLOCA UN METODO EDITAR YA QUE HIBERNATE UTILIZA SAVE PARA
+    
+    /*HIBERNATE UTILIZA SAVE PARA
     MODIFICAR O EDITAR SI ES QUE HAY CAMBIOS*/
+
+    @Override
+    public void editarPersona(Persona per, Long id) {
+        persoRepo.save(per);
+    }
 }
