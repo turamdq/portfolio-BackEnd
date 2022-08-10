@@ -3,20 +3,15 @@ package com.portfolio.turano.services;
 import com.portfolio.turano.models.Header;
 import java.util.List;
 
-public interface IHeaderService {
+public interface IHeaderService {    
+   
+    public List<Header> verHeaders ();    
     
-    //OBTENER UNA LISTA DE EXPERIENCIAS USANDO GETTER DE LA CLASE EXPERIENCIA
-    public List<Header> verHeaders ();
+    public void crearHeader (Header head);    
     
-    //CREAR UNA EXPERIENCIA
-    public void crearHeader (Header head);
+    public void borrarHeader (Long id);    
     
-    //BORRAR EXPERIENCIA POR ID
-    public void borrarHeader (Long id);
+    public Header buscarHeader (Long id);    
     
-    //BUSCAR EXPERIENCIA POR ID
-    public Header buscarHeader (Long id);
-    
-    //EDITAR UNA EXPERIENCIA POR ID
     public void editarHeader (Header head, Long id);
 }

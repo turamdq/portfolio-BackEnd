@@ -1,7 +1,7 @@
 package com.portfolio.turano.controller;
 
-import com.portfolio.turano.models.Educacion;
-import com.portfolio.turano.services.IEducacionService;
+import com.portfolio.turano.models.Proyecto;
+import com.portfolio.turano.services.IProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,30 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-public class EducacionController {
+public class ProyectoController {
     
     @Autowired
-    private IEducacionService eduServ;
+    private IProyectoService proyectoServ;
     
-    @GetMapping ("/educacion/ver")
+    @GetMapping ("/proyecto/ver")
     @ResponseBody
-    public List<Educacion> verEducacions () {
-        return eduServ.verEducaciones();    
+    public List<Proyecto> verProyectos () {
+        return proyectoServ.verProyectos();    
     }    
     
-    @PostMapping ("/educacion/nueva")
-    public void crearEducacion (@RequestBody Educacion edu) {
-        eduServ.crearEducacion(edu);    
+    @PostMapping ("/proyecto/nueva")
+    public void crearProyecto (@RequestBody Proyecto proyecto) {
+        proyectoServ.crearProyecto(proyecto);    
     }    
     
-    @DeleteMapping ("/educacion/borrar/{id}")
-    public void borrarEducacion (@PathVariable Long id) {
-        eduServ.borrarEducacion(id);
+    @DeleteMapping ("/proyecto/borrar/{id}")
+    public void borrarProyecto (@PathVariable Long id) {
+        proyectoServ.borrarProyecto(id);
     }    
     
-    @PutMapping("/educacion/editar/{id}")
-    public void editarEducacion(@PathVariable("id") Long id, 
-                                  @RequestBody Educacion edu) {
-        eduServ.editarEducacion(edu, id);        
+    @PutMapping("/proyecto/editar/{id}")
+    public void editarProyecto(@PathVariable("id") Long id, 
+                                  @RequestBody Proyecto proyecto) {
+        proyectoServ.editarProyecto(proyecto, id);        
     }
 }

@@ -1,7 +1,7 @@
 package com.portfolio.turano.controller;
 
-import com.portfolio.turano.models.Educacion;
-import com.portfolio.turano.services.IEducacionService;
+import com.portfolio.turano.models.Skill;
+import com.portfolio.turano.services.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,30 +16,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-public class EducacionController {
+public class SkillController {
     
     @Autowired
-    private IEducacionService eduServ;
+    private ISkillService skillServ;
     
-    @GetMapping ("/educacion/ver")
+    @GetMapping ("/skill/ver")
     @ResponseBody
-    public List<Educacion> verEducacions () {
-        return eduServ.verEducaciones();    
+    public List<Skill> verSkills () {
+        return skillServ.verSkills();    
     }    
     
-    @PostMapping ("/educacion/nueva")
-    public void crearEducacion (@RequestBody Educacion edu) {
-        eduServ.crearEducacion(edu);    
+    @PostMapping ("/skill/nueva")
+    public void crearSkill (@RequestBody Skill skill) {
+        skillServ.crearSkill(skill);    
     }    
     
-    @DeleteMapping ("/educacion/borrar/{id}")
-    public void borrarEducacion (@PathVariable Long id) {
-        eduServ.borrarEducacion(id);
+    @DeleteMapping ("/skill/borrar/{id}")
+    public void borrarSkill (@PathVariable Long id) {
+        skillServ.borrarSkill(id);
     }    
     
-    @PutMapping("/educacion/editar/{id}")
-    public void editarEducacion(@PathVariable("id") Long id, 
-                                  @RequestBody Educacion edu) {
-        eduServ.editarEducacion(edu, id);        
+    @PutMapping("/skill/editar/{id}")
+    public void editarSkill(@PathVariable("id") Long id, 
+                                  @RequestBody Skill skill) {
+        skillServ.editarSkill(skill, id);        
     }
 }

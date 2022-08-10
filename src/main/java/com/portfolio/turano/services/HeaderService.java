@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class HeaderService implements IHeaderService{
 
     @Autowired
-    IHeaderRepository headRepo;
+    public IHeaderRepository headRepo;
     
     @Override
     public List<Header> verHeaders() {
