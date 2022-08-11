@@ -4,6 +4,7 @@ import com.portfolio.turano.models.Persona;
 import com.portfolio.turano.services.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class PersonaController {
     
     //ANTE UNA SOLICITUD POST EN LA URL INDICADA
     //OBTENGO EL CONTENIDO DEL BODY Y LO GUARDO EN LA VARIABLE pers PARA GUARDAR
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/persona/nueva")
     public void crearPersona (@RequestBody Persona per) {
         persoServ.crearPersona(per);    
@@ -39,6 +41,7 @@ public class PersonaController {
     
     //ANTE UNA SOLICITUD DELETE EN LA URL INDICADA BORRO POR ID LA PERSONA
     //CON PathVariable RECIBO EN LA URL UNA VARIABLE (ID)
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/persona/borrar/{id}")
     public void borrarPersona (@PathVariable Long id) {
         persoServ.borrarPersona(id);
@@ -59,6 +62,7 @@ public class PersonaController {
         persoServ.crearPersona(per);
         return per;
     }*/
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/persona/editar/{id}")
     public void editarPersona(@PathVariable("id") Long id, 
                                   @RequestBody Persona per) {
