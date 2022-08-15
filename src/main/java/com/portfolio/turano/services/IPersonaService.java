@@ -21,4 +21,7 @@ public interface IPersonaService {
     
     //EDITAR UNA PERSONA POR ID
     public void editarPersona (Persona per, Long id);
+    
+    //Buscar una persona por ID2
+    public Persona findPersona(Long id);
 }

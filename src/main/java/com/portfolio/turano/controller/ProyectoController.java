@@ -4,6 +4,7 @@ import com.portfolio.turano.models.Proyecto;
 import com.portfolio.turano.services.IProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,16 +28,19 @@ public class ProyectoController {
         return proyectoServ.verProyectos();    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/proyecto/nueva")
     public void crearProyecto (@RequestBody Proyecto proyecto) {
         proyectoServ.crearProyecto(proyecto);    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/proyecto/borrar/{id}")
     public void borrarProyecto (@PathVariable Long id) {
         proyectoServ.borrarProyecto(id);
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/proyecto/editar/{id}")
     public void editarProyecto(@PathVariable("id") Long id, 
                                   @RequestBody Proyecto proyecto) {

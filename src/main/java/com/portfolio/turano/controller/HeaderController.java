@@ -4,6 +4,7 @@ import com.portfolio.turano.models.Header;
 import com.portfolio.turano.services.IHeaderService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,16 +28,19 @@ public class HeaderController {
         return headServ.verHeaders();    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/header/nueva")
     public void crearHeader (@RequestBody Header head) {
         headServ.crearHeader(head);    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/header/borrar/{id}")
     public void borrarHeader (@PathVariable Long id) {
         headServ.borrarHeader(id);
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/header/editar/{id}")
     public void editarHeader(@PathVariable("id") Long id, 
                                   @RequestBody Header head) {

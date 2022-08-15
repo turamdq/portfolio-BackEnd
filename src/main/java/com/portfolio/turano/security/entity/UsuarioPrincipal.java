@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * Clase Encargada de generar la seguridad Clase que implementa los privilegios
  * de cada usuario UserDetails es una clase propia de Spring Security
  */
-public class UsuarioMain implements UserDetails {
+public class UsuarioPrincipal implements UserDetails {
 
     private String nombre;
     private String usuario;
@@ -23,7 +23,7 @@ public class UsuarioMain implements UserDetails {
     // de GranthedAuthority de Spring security
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioMain(String nombre, String usuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UsuarioPrincipal(String nombre, String usuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.email = email;
@@ -32,14 +32,14 @@ public class UsuarioMain implements UserDetails {
     }
 
     //Metodo que asigna los privilegios (autorización)    
-    public static UsuarioMain build(Usuario usuario) {
+    public static UsuarioPrincipal build(Usuario usuario) {
 
         //Convertimos la clase Rol a la clase GrantedAuthority        
         List<GrantedAuthority> authorities = usuario.getRoles()
                         .stream()
                         .map(rol -> new SimpleGrantedAuthority(rol.getRolNombre().name()))
                         .collect(Collectors.toList());
-        return new UsuarioMain(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(),
+        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(),
                 usuario.getPassword(), authorities);
     }
 

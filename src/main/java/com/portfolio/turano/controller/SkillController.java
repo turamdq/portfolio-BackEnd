@@ -4,6 +4,7 @@ import com.portfolio.turano.models.Skill;
 import com.portfolio.turano.services.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,16 +28,19 @@ public class SkillController {
         return skillServ.verSkills();    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping ("/skill/nueva")
     public void crearSkill (@RequestBody Skill skill) {
         skillServ.crearSkill(skill);    
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/skill/borrar/{id}")
     public void borrarSkill (@PathVariable Long id) {
         skillServ.borrarSkill(id);
     }    
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/skill/editar/{id}")
     public void editarSkill(@PathVariable("id") Long id, 
                                   @RequestBody Skill skill) {

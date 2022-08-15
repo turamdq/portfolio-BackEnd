@@ -67,6 +67,11 @@ public class PersonaController {
     public void editarPersona(@PathVariable("id") Long id, 
                                   @RequestBody Persona per) {
         persoServ.editarPersona(per, id);
-    }     
+    }
+    
+     @GetMapping("persona/traer/perfil")
+    public Persona findPersona(){
+        return persoServ.findPersona((long)1);
+    }
 
 }
