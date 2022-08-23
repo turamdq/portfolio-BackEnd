@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,15 +16,20 @@ public class Persona {
     //DEFINO ID (PK) QUE SE GENERE DE FORMA AUTO
     //ATRIBUTOS
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     //NotNull EL CAMPO NO PUEDE ESTAR VACIO
     @NotNull
+    @Size(min = 1, max = 50, message = "No cumple con la longitud.")
     private String name;
+    
     @NotNull
+    @Size(min = 1, max = 50, message = "No cumple con la longitud.")
     private String position;
+    
     @NotNull
+    @Size(min = 1, max = 300, message = "No cumple con la longitud.")
     private String about;
     
     //CONSTRUCTORES
