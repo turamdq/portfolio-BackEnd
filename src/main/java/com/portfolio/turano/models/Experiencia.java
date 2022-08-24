@@ -5,13 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "experiencia")
 public class Experiencia implements Serializable {
     
     @Id
@@ -37,7 +35,5 @@ public class Experiencia implements Serializable {
         this.endDate = endDate;
         this.position = position;
         this.tasks = tasks;
-    }
-    
-    
+    }    
 }

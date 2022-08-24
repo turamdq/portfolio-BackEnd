@@ -1,7 +1,7 @@
 package com.portfolio.turano.models;
 
 
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,13 +13,12 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Persona {
+public class Persona implements Serializable {
     
     //DEFINO ID (PK) QUE SE GENERE DE FORMA AUTO
     //ATRIBUTOS
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false, unique = true)
     private Long id;
     
     //NotNull EL CAMPO NO PUEDE ESTAR VACIO
